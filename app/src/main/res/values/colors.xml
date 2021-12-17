@@ -10,6 +10,8 @@
     <color name="biruUtama">#18A0FB</color>
     <color name="biruGelap">#3999DC</color>
     <color name="abu">#8D8D8D</color>
+    <color name="yellow">#F7CD2E</color>
+    <color name="red">#E21717</color>
     <color name="abuGelap">#777777</color>
     <color name="background">#FAFAFA</color>
 </resources>

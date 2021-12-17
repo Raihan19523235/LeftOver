@@ -6,10 +6,12 @@
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/background_app.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/bawah_melengkung.xml" value="0.290625" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/biru_profil_toko.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/button_biru.xml" value="0.15625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/button_lingkaran.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/custom_button.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/custom_button_biru.xml" value="0.290625" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/custom_form.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_baseline_keyboard_backspace_24.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.290625" />
@@ -18,12 +20,22 @@
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_baseline_moped_24.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_launcher_background.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/list_rounded.xml" value="0.290625" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_beranda_penjual.xml" value="0.2" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_daftar_produk.xml" value="0.4" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_edit_menu.xml" value="0.2" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_halaman_toko.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_list_makanan.xml" value="0.264" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_login_penjual.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_metode_pembayaran.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_notif_berhasil.xml" value="0.264" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_pengiriman.xml" value="0.152" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_profile_penjual.xml" value="0.264" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_register_penjual.xml" value="0.1" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_tambah_menu.xml" value="0.2698072805139186" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/menu_item.xml" value="0.536" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/pesanan_item.xml" value="0.2536231884057971" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/ulasan_item.xml" value="0.2536231884057971" />
       </map>
     </option>
   </component>

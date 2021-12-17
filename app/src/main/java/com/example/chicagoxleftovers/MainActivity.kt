@@ -31,4 +31,12 @@ class MainActivity : AppCompatActivity() {
         val intKeListMakanan = Intent(this, ListMakanan::class.java)
         startActivity(intKeListMakanan)
     }
+    fun fKeLoginPenjual(view : View){
+        val intKeLogin = Intent(this, LoginPenjual::class.java)
+        startActivity(intKeLogin)
+    }
+    fun fKeRegisterPenjual(view : View){
+        val intKeRegister = Intent(this, RegisterPenjual::class.java)
+        startActivity(intKeRegister)
+    }
 }
