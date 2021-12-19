@@ -65,7 +65,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/abu"/>
+                android:background="@drawable/ic_baseline_add_circle_24"/>
 
             <TextView
                 android:layout_width="wrap_content"

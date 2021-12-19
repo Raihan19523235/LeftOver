@@ -64,9 +64,11 @@ class BerandaPenjual : AppCompatActivity() {
         finish()
     }
 
-    fun fLogout(view : View){
-        firebaseAuth.signOut()
-        startActivity(Intent(this, MainActivity::class.java))
+    fun fKeProfil(view : View){
+        startActivity(Intent(this, ProfilePenjual::class.java))
+        finish()
+//        firebaseAuth.signOut()
+//        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun checkUser() {
@@ -106,7 +108,7 @@ class BerandaPenjual : AppCompatActivity() {
 //            val Alamat = FirebaseDatabase.getInstance().getReference("Toko")
 
             //set to textvie
-            binding.tvAlamat.text = email
+//            binding.tvAlamat.text = email
 
         }
     }

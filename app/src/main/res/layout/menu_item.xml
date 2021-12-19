@@ -61,6 +61,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/btnEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:text="Edit"
@@ -70,6 +71,7 @@
                         android:background="@color/yellow"/>
 
                     <Button
+                        android:id="@+id/btnDelete"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:text="Hapus"

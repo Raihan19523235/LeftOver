@@ -46,14 +46,7 @@ class DaftarProduk : AppCompatActivity() {
 
         //init firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
-
         checkUser()
-
-
-
-//        menuRecyclerView = findViewById(R.id.menuList)
-//        menuRecyclerView.layoutManager = LinearLayoutManager(this)
-//        menuRecyclerView.setHasFixedSize(true)
 
         menuList.setHasFixedSize(true)
         menuList.layoutManager = LinearLayoutManager(this@DaftarProduk)
@@ -82,13 +75,8 @@ class DaftarProduk : AppCompatActivity() {
             }
 
         })
-
         menuArrayList = arrayListOf<Menu>()
 //        getMenuData()
-
-
-
-
     }
 
     fun fKembali(view: android.view.View) {

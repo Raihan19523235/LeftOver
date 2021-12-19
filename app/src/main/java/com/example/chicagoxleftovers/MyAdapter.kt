@@ -1,9 +1,11 @@
 package com.example.chicagoxleftovers
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +29,8 @@ class MyAdapter( var mContext : Context, var menuList : List<Menu>) : RecyclerVi
         holder.harga_asli.text = currentitem.harga_asli.toString()
         holder.tanggal_produksi.text = currentitem.tanggal_produksi
 
+
+//28.39
     }
 
     override fun getItemCount(): Int {
@@ -35,10 +39,11 @@ class MyAdapter( var mContext : Context, var menuList : List<Menu>) : RecyclerVi
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val foto_produk = itemView.findViewById<ImageView>(R.id.ivMenu)
-        val nama_menu  = itemView.findViewById<TextView>(R.id.tvNamaMenu)
-        val harga_asli = itemView.findViewById<TextView>(R.id.tvHargaAsli)
-        val tanggal_produksi = itemView.findViewById<TextView>(R.id.tvTanggal)
+        var foto_produk = itemView.findViewById<ImageView>(R.id.ivMenu)
+        var nama_menu  = itemView.findViewById<TextView>(R.id.tvNamaMenu)
+        var harga_asli = itemView.findViewById<TextView>(R.id.tvHargaAsli)
+        var tanggal_produksi = itemView.findViewById<TextView>(R.id.tvTanggal)
+        var editData = itemView.findViewById<Button>(R.id.btnEdit)
 
     }
 }

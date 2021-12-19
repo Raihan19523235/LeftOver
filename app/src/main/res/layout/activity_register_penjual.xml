@@ -126,10 +126,23 @@
                         android:textSize="18sp" />
 
                     <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/abu" />
+                        android:id="@+id/ivFotoProfil"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button_biru"
+                        android:text="milih foto"
+                        android:onClick="milihGambar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_semibold"/>
 
                     <TextView
                         android:layout_width="wrap_content"

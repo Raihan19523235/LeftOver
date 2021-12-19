@@ -11,7 +11,9 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.webkit.MimeTypeMap
+import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.chicagoxleftovers.databinding.ActivityTambahMenuBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +30,7 @@ import java.util.*
 import java.util.logging.Handler
 import java.util.logging.SimpleFormatter
 
-class TambahMenu : AppCompatActivity() {
+class TambahMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener  {
 
     private var mImageUri: Uri? = null
     private var mStorageRef: StorageReference? = null
@@ -54,10 +56,10 @@ class TambahMenu : AppCompatActivity() {
     private var fotoProduk = ""
     private var deskripsi = ""
 
-    val c = Calendar.getInstance()
-    val year = c.get(Calendar.YEAR)
-    val month = c.get(Calendar.MONTH)
-    val day = c.get(Calendar.DAY_OF_MONTH)
+    var tanggal = 0
+    var bulan = 0
+    var tahun = 0
+    lateinit var teksTanggal: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +82,23 @@ class TambahMenu : AppCompatActivity() {
 
     }
 
+    fun getSaatIni(){
+        val kal: Calendar = Calendar.getInstance()
+        tanggal = kal.get(Calendar.DAY_OF_MONTH)
+        bulan = kal.get(Calendar.MONTH)
+        tahun = kal.get(Calendar.YEAR)
+    }
+    fun fSetTanggal(view: View){
+        getSaatIni()
+        DatePickerDialog(this, this, tahun, bulan, tanggal).show()
+    }
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        tanggal = dayOfMonth
+        bulan = month
+        tahun = year
+        teksTanggal = findViewById(R.id.tTanggal)
+        teksTanggal.text = "${tanggal} - ${bulan} - ${tahun}"
+    }
 
     fun pilihGambar(view: View){
         openFileChoose()
@@ -126,17 +145,7 @@ class TambahMenu : AppCompatActivity() {
             Toast.makeText(this, "tidak ada data yang dipilih", Toast.LENGTH_SHORT).show()
         }
 
-//        val fileName = FirebaseAuth.getInstance().uid
-//        val storageReference =  FirebaseStorage.getInstance().getReference("images/$fileName")
-//        storageReference.putFile(mImageUri!!)
-//            .addOnSuccessListener {
-//                ivFotoMenu.setImageURI(null)
-//                Toast.makeText(this@TambahMenu, "data gambar disimpan", Toast.LENGTH_LONG).show()
-//            }
-//            .addOnFailureListener { e ->
-//                Toast.makeText(this@TambahMenu, e.message, Toast.LENGTH_SHORT).show()
-//
-//            }
+
 
     }
 
@@ -167,7 +176,7 @@ class TambahMenu : AppCompatActivity() {
         namaMenu = binding.etNamaMenu.text.toString().trim()
         hargaAsli = binding.etHargaAsli.text.toString().toInt()
         hargaDiskon = binding.etHargaDiskon.text.toString().toInt()
-        tanggalProduksi = binding.etTanggal.text.toString().trim()
+        tanggalProduksi = binding.tTanggal.text.toString().trim()
         fotoProduk = binding.ivFotoMenu.toString()
         deskripsi = binding.etDeskripsi.text.toString().trim()
 

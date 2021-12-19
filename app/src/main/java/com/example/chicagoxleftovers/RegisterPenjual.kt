@@ -2,10 +2,12 @@ package com.example.chicagoxleftovers
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.webkit.MimeTypeMap
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -16,8 +18,16 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.activity_register_penjual.*
+import kotlinx.android.synthetic.main.activity_tambah_menu.*
 
 class RegisterPenjual : AppCompatActivity() {
+
+    private var mImageUri: Uri? = null
+    private val PICK_IMAGE_REQUEST = 100
+    private var mStorageRef: StorageReference? = null
 
     //viewBinding
     private lateinit var binding: ActivityRegisterPenjualBinding
@@ -32,7 +42,7 @@ class RegisterPenjual : AppCompatActivity() {
     private var namaToko = ""
     private var alamat = ""
     private var noTlp = ""
-//    private var fotoToko = ""
+    private var fotoToko = ""
     private var username = ""
     private var email = ""
     private var password = ""
@@ -49,6 +59,8 @@ class RegisterPenjual : AppCompatActivity() {
 //        actionBar.setDisplayHomeAsUpEnabled(true)
 //        actionBar.setDisplayShowHomeEnabled(true)
 //
+        mStorageRef = FirebaseStorage.getInstance().getReference("Toko")
+
         //configure progress Dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Mohon tunggu sebentar")
@@ -58,6 +70,38 @@ class RegisterPenjual : AppCompatActivity() {
         //init firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
 
+    }
+
+    fun milihGambar(view: View){
+        openFileChoose()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST
+            && resultCode == RESULT_OK
+            && data != null
+            && data.data != null
+        ){
+
+            mImageUri = data?.data!!
+            ivFotoProfil.setImageURI(mImageUri)
+
+        }
+    }
+
+    private fun openFileChoose() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+
+    }
+
+    private fun getFileExtension(uri: Uri): String? {
+        val cR = contentResolver
+        val mime = MimeTypeMap.getSingleton()
+        return mime.getExtensionFromMimeType(cR.getType(uri))
     }
 
 //    override fun onSupportNavigateUp(): Boolean {
@@ -82,7 +126,7 @@ class RegisterPenjual : AppCompatActivity() {
         namaToko = binding.etNamaToko.text.toString().trim()
         alamat = binding.etAlamat.text.toString().trim()
         noTlp = binding.etNoTelp.text.toString().trim()
-//        fotoToko = binding.etNamaToko.text.toString().trim()
+        fotoToko = binding.etNamaToko.text.toString()
         username = binding.etUsername.text.toString().trim()
         email = binding.etEmail.text.toString().trim()
         password = binding.etPassword.text.toString().trim()
@@ -97,6 +141,9 @@ class RegisterPenjual : AppCompatActivity() {
         }
         else if(noTlp.isEmpty()){
             Toast.makeText(this, "Nomor telepon tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        }
+        else if(mImageUri == null){
+            Toast.makeText(this, "Foto tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
         else if(username.isEmpty()){
             Toast.makeText(this, "Usernam tidak boleh kosong", Toast.LENGTH_SHORT).show()
@@ -152,11 +199,17 @@ class RegisterPenjual : AppCompatActivity() {
         hashMap["nama_toko"] = namaToko
         hashMap["alamat_toko"] = alamat
         hashMap["no_Tlp"] = noTlp
-        hashMap["foto_toko"] = ""
+        hashMap["foto_toko"] = id_user + "." + getFileExtension(mImageUri!!)
         hashMap["username"] = username
         hashMap["email"] = email
         hashMap["password"] = password
         hashMap["timestamp"] = timestamp
+
+        //upload image to database
+        val fileReference = mStorageRef!!.child(
+            id_user + "." + getFileExtension(mImageUri!!)
+        )
+        fileReference.putFile(mImageUri!!)
 
         //set data to db
         val ref = FirebaseDatabase.getInstance().getReference("toko")
