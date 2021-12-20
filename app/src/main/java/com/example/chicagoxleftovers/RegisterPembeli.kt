@@ -8,29 +8,23 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.webkit.MimeTypeMap
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import com.example.chicagoxleftovers.databinding.ActivityRegisterPenjualBinding
+import com.example.chicagoxleftovers.databinding.ActivityRegisterPembeliBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_register_penjual.*
-import kotlinx.android.synthetic.main.activity_tambah_menu.*
+import kotlinx.android.synthetic.main.activity_register_pembeli.*
 
-class RegisterPenjual : AppCompatActivity() {
+class RegisterPembeli : AppCompatActivity() {
 
     private var mImageUri: Uri? = null
     private val PICK_IMAGE_REQUEST = 100
     private var mStorageRef: StorageReference? = null
 
     //viewBinding
-    private lateinit var binding: ActivityRegisterPenjualBinding
+    private lateinit var binding: ActivityRegisterPembeliBinding
 
     //progressDialog
     private lateinit var progressDialog: ProgressDialog
@@ -39,27 +33,22 @@ class RegisterPenjual : AppCompatActivity() {
 
     //firebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
-    private var namaToko = ""
-    private var alamat = ""
-    private var noTlp = ""
-    private var fotoToko = ""
+    private var fotoPembeli = ""
+    private var namaPembeli = ""
+    private var alamatPembeli = ""
     private var username = ""
     private var email = ""
+    private var poin = 0
     private var password = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityRegisterPenjualBinding.inflate(layoutInflater)
+        binding = ActivityRegisterPembeliBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        //configure actionbar
-//        actionBar = supportActionBar!!
-//        actionBar.title = "Register"
-//        actionBar.setDisplayHomeAsUpEnabled(true)
-//        actionBar.setDisplayShowHomeEnabled(true)
-//
-        mStorageRef = FirebaseStorage.getInstance().getReference("Toko")
+        mStorageRef = FirebaseStorage.getInstance().getReference("User")
 
         //configure progress Dialog
         progressDialog = ProgressDialog(this)
@@ -69,11 +58,18 @@ class RegisterPenjual : AppCompatActivity() {
 
         //init firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
-
     }
 
     fun milihGambar(view: View){
         openFileChoose()
+    }
+
+    private fun openFileChoose() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -85,17 +81,9 @@ class RegisterPenjual : AppCompatActivity() {
         ){
 
             mImageUri = data?.data!!
-            ivFotoProfil.setImageURI(mImageUri)
+            ivFProfil.setImageURI(mImageUri)
 
         }
-    }
-
-    private fun openFileChoose() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-
     }
 
     private fun getFileExtension(uri: Uri): String? {
@@ -104,45 +92,38 @@ class RegisterPenjual : AppCompatActivity() {
         return mime.getExtensionFromMimeType(cR.getType(uri))
     }
 
-
-    fun fKeLoginPenjual(view : View){
-        startActivity(Intent(this@RegisterPenjual, LoginPenjual::class.java))
+    fun fKeLoginPembeli(view : View){
+        startActivity(Intent(this@RegisterPembeli, LoginPembeli::class.java))
         finish()
-//        val intKeLogin = Intent(this, LoginPenjual::class.java)
-//        startActivity(intKeLogin)
+
     }
 
     fun fRegister(view : View){
         validateData()
-
     }
 
     private fun validateData() {
         //input data
-        namaToko = binding.etNamaToko.text.toString().trim()
-        alamat = binding.etAlamat.text.toString().trim()
-        noTlp = binding.etNoTelp.text.toString().trim()
-        fotoToko = binding.ivFotoProfil.toString()
-        username = binding.etUsername.text.toString().trim()
-        email = binding.etEmail.text.toString().trim()
-        password = binding.etPassword.text.toString().trim()
-        val cPassword = binding.etUlangiPassword.text.toString().trim()
+        fotoPembeli = binding.ivFProfil.toString()
+        namaPembeli = binding.etNamaPembeli.text.toString().trim()
+        alamatPembeli = binding.etAlamatPembeli.text.toString().trim()
+        username = binding.etUsernamePembeli.text.toString().trim()
+        email = binding.etEmailPembeli.text.toString().trim()
+        password = binding.etPasswordPembeli.text.toString().trim()
+        val cPassword = binding.etUlangiPasswordPembeli.text.toString().trim()
 
         //validate data
-        if(namaToko.isEmpty()){
-            Toast.makeText(this, "Nama toko tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        if(username.isEmpty()){
+            Toast.makeText(this, "Username tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
-        else if(alamat.isEmpty()){
-            Toast.makeText(this, "Alamat tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        else if(namaPembeli.isEmpty()){
+            Toast.makeText(this, "Nama pembeli tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
-        else if(noTlp.isEmpty()){
-            Toast.makeText(this, "Nomor telepon tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        else if(alamatPembeli.isEmpty()){
+            Toast.makeText(this, "Alamat pembeli tidak boleh kosong tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
-        else if(fotoToko == null){
-            Toast.makeText(this, "Foto tidak boleh kosong", Toast.LENGTH_SHORT).show()
-        }
-        else if(username.isEmpty()){
-            Toast.makeText(this, "Usernam tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        else if(fotoPembeli == null){
+                Toast.makeText(this, "Foto tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
         else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             Toast.makeText(this, "Format email salah", Toast.LENGTH_SHORT).show()
@@ -159,6 +140,8 @@ class RegisterPenjual : AppCompatActivity() {
         else{
             createAccount()
         }
+
+
     }
 
     private fun createAccount() {
@@ -169,8 +152,7 @@ class RegisterPenjual : AppCompatActivity() {
         //create user in firebase auth
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                updateTokoInfo()
-//                Toast.makeText(this, "masuk sini", Toast.LENGTH_SHORT).show()
+                updateUserInfo()
             }
             .addOnFailureListener{ e->
                 //login failed
@@ -179,9 +161,9 @@ class RegisterPenjual : AppCompatActivity() {
             }
     }
 
-    private fun updateTokoInfo() {
+    private fun updateUserInfo() {
         //menambah user info ke dalam database
-        progressDialog.setMessage("Menyimpan info toko...")
+        progressDialog.setMessage("Menyimpan info user...")
 
         //timestamp
         val timestamp = System.currentTimeMillis()
@@ -192,13 +174,13 @@ class RegisterPenjual : AppCompatActivity() {
         //setup data to add db
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["id_user"] = id_user
-        hashMap["nama_toko"] = namaToko
-        hashMap["alamat_toko"] = alamat
-        hashMap["no_Tlp"] = noTlp
-        hashMap["foto_toko"] = id_user + "." + getFileExtension(mImageUri!!)
+        hashMap["nama_pembeli"] = namaPembeli
+        hashMap["alamat_pembeli"] = alamatPembeli
+        hashMap["foto_user"] = id_user + "." + getFileExtension(mImageUri!!)
         hashMap["username"] = username
         hashMap["email"] = email
         hashMap["password"] = password
+        hashMap["poin"] = 0
         hashMap["timestamp"] = timestamp
 
         //upload image to database
@@ -208,12 +190,12 @@ class RegisterPenjual : AppCompatActivity() {
         fileReference.putFile(mImageUri!!)
 
         //set data to db
-        val ref = FirebaseDatabase.getInstance().getReference("toko")
+        val ref = FirebaseDatabase.getInstance().getReference("user")
 
         ref.child(id_user!!).setValue(hashMap)
         progressDialog.dismiss()
 
-        startActivity(Intent(this@RegisterPenjual, LoginPenjual::class.java))
+        startActivity(Intent(this@RegisterPembeli, LoginPembeli::class.java))
         finish()
 
     }

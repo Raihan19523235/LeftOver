@@ -88,10 +88,12 @@ class TambahMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener  {
         bulan = kal.get(Calendar.MONTH)
         tahun = kal.get(Calendar.YEAR)
     }
+
     fun fSetTanggal(view: View){
         getSaatIni()
         DatePickerDialog(this, this, tahun, bulan, tanggal).show()
     }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         tanggal = dayOfMonth
         bulan = month

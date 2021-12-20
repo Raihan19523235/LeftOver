@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BerandaPembeli"
+    android:background="@color/background"
+    android:paddingTop="24dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvJudulLokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Alamat kamu saat ini: "
+                android:textColor="@color/abu"
+                android:textSize="14dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"/>
+
+            <TextView
+                android:id="@+id/tvLokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvJudulLokasi"
+                android:layout_marginTop="4sp"
+                android:text="Lokasi pengguna "
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvRekomendasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLokasi"
+                android:layout_marginTop="28sp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rekomendasi Makanan"
+                android:textColor="@color/biruGelap"
+                android:textSize="20sp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRekomendasi"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/card_produk" />
+
+
+
+            <TextView
+                android:id="@+id/tvToko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rvListProduk"
+                android:layout_marginTop="20sp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rekomendasi Toko"
+                android:textColor="@color/biruGelap"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rvListProduk"
+                android:layout_marginTop="25sp"
+                android:fontFamily="@font/poppins"
+                android:gravity="right"
+                android:text="Selengkapnya"
+                android:onClick="fKeJelajah"
+                android:textColor="@color/biruGelap"
+                android:textSize="12sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListToko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvToko"
+                android:layout_marginTop="4dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/card_store" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

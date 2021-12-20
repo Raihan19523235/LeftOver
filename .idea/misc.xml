@@ -20,19 +20,25 @@
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_baseline_moped_24.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/ic_launcher_background.xml" value="0.290625" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/drawable/list_rounded.xml" value="0.290625" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_beranda_pembeli.xml" value="0.32653061224489793" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_beranda_penjual.xml" value="0.2" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_daftar_produk.xml" value="0.3060240963855422" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_edit_menu.xml" value="0.2" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_halaman_toko.xml" value="0.4" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_jelajah.xml" value="0.128" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_list_makanan.xml" value="0.264" />
-        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_login_penjual.xml" value="0.4" />
-        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_login_pembeli.xml" value="0.264" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_login_penjual.xml" value="0.1" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_metode_pembayaran.xml" value="0.4" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_notif_berhasil.xml" value="0.264" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_pengiriman.xml" value="0.152" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_profile_penjual.xml" value="0.2" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_register_pembeli.xml" value="0.1" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_register_penjual.xml" value="0.1" />
-        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_tambah_menu.xml" value="0.4" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/activity_tambah_menu.xml" value="0.22093023255813954" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/card_produk.xml" value="0.4" />
+        <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/card_store.xml" value="0.1" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/menu_item.xml" value="0.1" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/pesanan_item.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/PREDATOR/AndroidStudioProjects/ChicagoxLeftovers/app/src/main/res/layout/ulasan_item.xml" value="0.1" />

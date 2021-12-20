@@ -57,6 +57,21 @@ class DaftarProduk : AppCompatActivity() {
         mStorage = FirebaseStorage.getInstance()
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("menu")
 
+        listAdapter.clickButtonEdit(object : MyAdapter.setOnClickEdit{
+            override fun editMenu(v: Menu) {
+                startActivity(Intent(this@DaftarProduk, EditMenu::class.java)
+                    .putExtra("dataMenu",v))
+            }
+        })
+
+        listAdapter.clickButtonDelete(object : MyAdapter.setOnClickDelete{
+            override fun deleteDataMenu(menu: Menu) {
+                //fungsi untuk delete di database
+                Toast.makeText(this@DaftarProduk, "SUCCESS DELETE", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
         mDBListener = mDatabaseRef!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 mMenu.clear()

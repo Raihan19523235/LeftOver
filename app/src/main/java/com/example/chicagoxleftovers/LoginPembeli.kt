@@ -4,28 +4,16 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PatternMatcher
-import android.text.TextUtils
 import android.util.Patterns
-import android.view.View
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
+import com.example.chicagoxleftovers.databinding.ActivityLoginPembeliBinding
 import com.example.chicagoxleftovers.databinding.ActivityLoginPenjualBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 
-class LoginPenjual : AppCompatActivity() {
+class LoginPembeli : AppCompatActivity() {
 
     //viewBinding
-    private lateinit var binding: ActivityLoginPenjualBinding
+    private lateinit var binding: ActivityLoginPembeliBinding
 
     //progressDialog
     private lateinit var progressDialog: ProgressDialog
@@ -37,9 +25,8 @@ class LoginPenjual : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginPenjualBinding.inflate(layoutInflater)
+        binding = ActivityLoginPembeliBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         //configure progress Dialog
         progressDialog = ProgressDialog(this)
@@ -51,42 +38,19 @@ class LoginPenjual : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
     }
 
-    private fun checkUser() {
-        progressDialog.setMessage("Mengecek User...")
-
-        val firebaseUser = firebaseAuth.currentUser!!
-
-        val ref = Firebase.database.getReference("toko")
-        ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    progressDialog.dismiss()
-                    val value = snapshot.getValue<String>()
-//                    Log.d(TAG, "Value is: " + value)
-                }
-
-                override fun onCancelled(error : DatabaseError){
-
-                }
-
-
-            })
-    }
-
-    fun fKeRegisterPenjual(view : View){
-        val intKeRegister = Intent(this, RegisterPenjual::class.java)
-        startActivity(intKeRegister)
-    }
-
-    fun fLogin(view : View){
-        //before login validate data
+    fun fLoginPembeli(view: android.view.View) {
         validateData()
+    }
+
+    fun fKeRegisterPembeli(view: android.view.View) {
+        val intKeRegisterPembeli = Intent(this, RegisterPembeli::class.java)
+        startActivity(intKeRegisterPembeli)
     }
 
     private fun validateData() {
         //get data
-        email = binding.etEmail.text.toString().trim()
-        password = binding.etPassword.text.toString().trim()
+        email = binding.etEmailPembeli.text.toString().trim()
+        password = binding.etPasswordPembeli.text.toString().trim()
 
         //validate data
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -98,11 +62,11 @@ class LoginPenjual : AppCompatActivity() {
             Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
         else{
-            loginToko()
+            fLoginPembeli()
         }
     }
 
-    private fun loginToko() {
+    private fun fLoginPembeli() {
         progressDialog.show()
         firebaseAuth.signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
@@ -115,8 +79,7 @@ class LoginPenjual : AppCompatActivity() {
                 val email = firebaseUser!!.email
                 Toast.makeText(this, "login as $email", Toast.LENGTH_SHORT).show()
 
-                //
-                startActivity(Intent(this, BerandaPenjual::class.java))
+                startActivity(Intent(this, BerandaPembeli::class.java))
                 finish()
             }
             .addOnFailureListener{ e->

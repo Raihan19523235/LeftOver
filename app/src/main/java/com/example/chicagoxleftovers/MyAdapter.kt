@@ -9,9 +9,22 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 //class MyAdapter(private val menuList : ArrayList<Menu>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
-class MyAdapter( var mContext : Context, var menuList : List<Menu>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter( var mContext : Context, var menuList : MutableList<Menu>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
+    private lateinit var listenerClickEdit : setOnClickEdit
+
+    private lateinit var listenerClickDelete : setOnClickDelete
+
+    fun clickButtonEdit(v : setOnClickEdit){
+        this.listenerClickEdit = v
+    }
+
+    fun clickButtonDelete(listener: setOnClickDelete){
+        this.listenerClickDelete  = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -23,12 +36,20 @@ class MyAdapter( var mContext : Context, var menuList : List<Menu>) : RecyclerVi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentitem = menuList[position]
+//        Glide.with(mContext)
+//            .load(currentitem.foto_produk).into(holder.foto_produk)
 
         holder.foto_produk.loadImage(currentitem.foto_produk)
         holder.nama_menu.text = currentitem.nama_menu
-        holder.harga_asli.text = currentitem.harga_asli.toString()
+        holder.harga_diskon.text = currentitem.harga_asli.toString()
         holder.tanggal_produksi.text = currentitem.tanggal_produksi
-
+        holder.editData.setOnClickListener {
+            listenerClickEdit.editMenu(menuList[position])
+        }
+        holder.deleteData.setOnClickListener {
+            listenerClickDelete.deleteDataMenu(menuList[position])
+            menuDelete(position)
+        }
 
 //28.39
     }
@@ -38,12 +59,40 @@ class MyAdapter( var mContext : Context, var menuList : List<Menu>) : RecyclerVi
     }
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        var foto_produk:ImageView
+        var nama_menu:TextView
+        var harga_diskon:TextView
+        var tanggal_produksi:TextView
+        var editData:Button
+        var deleteData : Button
 
-        var foto_produk = itemView.findViewById<ImageView>(R.id.ivMenu)
-        var nama_menu  = itemView.findViewById<TextView>(R.id.tvNamaMenu)
-        var harga_asli = itemView.findViewById<TextView>(R.id.tvHargaAsli)
-        var tanggal_produksi = itemView.findViewById<TextView>(R.id.tvTanggal)
-        var editData = itemView.findViewById<Button>(R.id.btnEdit)
+        init {
+            foto_produk = itemView.findViewById(R.id.ivMenu)
+            nama_menu  = itemView.findViewById(R.id.tvNamaMenu)
+            harga_diskon = itemView.findViewById(R.id.tvHargaAsli)
+            tanggal_produksi = itemView.findViewById(R.id.tvTanggal)
+            editData = itemView.findViewById(R.id.btnEdit)
+            deleteData = itemView.findViewById(R.id.btnDelete)
+//            editData.setOnClickListener {
+////                when(it)
+//            }
+
+        }
 
     }
+
+    interface setOnClickEdit{
+        fun editMenu(v : Menu)
+    }
+
+    interface setOnClickDelete {
+        fun deleteDataMenu(menu: Menu)
+    }
+
+    fun menuDelete(position: Int){
+        this.menuList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyDataSetChanged()
+    }
 }
+

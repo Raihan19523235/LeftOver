@@ -33,7 +33,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="100dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Data toko"
+                        android:text="Daftar toko"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 

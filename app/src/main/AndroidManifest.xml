@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChicagoxLeftovers">
         <activity
+            android:name=".Jelajah"
+            android:exported="false" />
+        <activity
+            android:name=".BerandaPembeli"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPembeli"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPembeli"
+            android:exported="false" />
+        <activity
             android:name=".EditMenu"
             android:exported="false" />
         <activity

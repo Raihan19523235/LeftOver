@@ -116,7 +116,6 @@ class ProfilePenjual : AppCompatActivity() {
                 }
             })
 
-//            val Alamat = FirebaseDatabase.getInstance().getReference("Toko")
 
 
         }

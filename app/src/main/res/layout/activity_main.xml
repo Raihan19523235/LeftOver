@@ -1,34 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnLogin"
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="189sp"
+        android:layout_height="196sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="86dp" />
+
+    <TextView
+        android:id="@+id/tvAplikasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:onClick="fKeLoginPenjual"
-        android:text="Login"
+        android:layout_below="@+id/ivLogo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="102dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center_horizontal"
+        android:text="LeftOver"
+        android:textColor="@color/biruGelap"
+        android:textSize="32sp"/>
+
+    <Button
+        android:id="@+id/btnPembeli"
+        android:layout_width="328sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAplikasi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/custom_button_biru"
+        android:onClick="fKeLoginPembeli"
+        android:text="Pembeli"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnRegis"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnPenjual"
+        android:layout_width="328sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:onClick="fKeRegisterPenjual"
-        android:text="Register"
+        android:layout_below="@+id/btnPembeli"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/custom_button_biru"
+        android:onClick="fKeLoginPenjual"
+        android:text="Penjual"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btnLogin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="88dp"-->
+<!--        android:onClick="fKeLoginPenjual"-->
+<!--        android:text="Login Penjual"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnRegis"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="152dp"-->
+<!--        android:onClick="fKeRegisterPenjual"-->
+<!--        android:text="Register Penjual"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnLoginPembeli"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="400dp"-->
+<!--        android:onClick="fKeLoginPembeli"-->
+<!--        android:text="Login Pembeli"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnRegisPembeli"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="488dp"-->
+<!--        android:onClick="fKeRegisterPembeli"-->
+<!--        android:text="Register Pembeli"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <!--    <Button-->
 <!--        android:id="@+id/button6"-->
@@ -100,4 +190,4 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.692" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
