@@ -90,7 +90,7 @@ class DaftarProduk : AppCompatActivity() {
             }
 
         })
-        menuArrayList = arrayListOf<Menu>()
+//        menuArrayList = arrayListOf<Menu>()
 //        getMenuData()
     }
 

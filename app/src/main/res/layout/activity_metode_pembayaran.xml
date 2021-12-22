@@ -16,6 +16,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="fKembali"
             android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <TextView
@@ -82,6 +83,8 @@
                                 tools:ignore="TouchTargetSizeCheck" />
 
                             <RadioButton
+                                android:checked="true"
+                                android:defaultFocusHighlightEnabled="true"
                                 android:id="@+id/radioButton2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -157,36 +160,36 @@
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
 
-                            <Button
-                                android:id="@+id/btnTambah"
-                                android:layout_width="30dp"
-                                android:background="@color/biruUtama"
-                                android:textColor="@color/white"
-                                android:layout_height="35dp"
-                                android:text="+"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="16dp"/>
+<!--                            <Button-->
+<!--                                android:id="@+id/btnTambah"-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:background="@color/biruUtama"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:layout_height="35dp"-->
+<!--                                android:text="+"-->
+<!--                                android:layout_gravity="center_vertical"-->
+<!--                                android:layout_marginStart="16dp"/>-->
 
                             <TextView
                                 android:id="@+id/tvBanyak"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="30dp"
                                 android:layout_gravity="center_vertical"
                                 android:fontFamily="@font/poppins"
                                 android:text="1"
                                 android:textColor="@color/biruGelap"
                                 android:textSize="14sp" />
 
-                            <Button
-                                android:id="@+id/btnKurang"
-                                android:background="@color/biruUtama"
-                                android:textColor="@color/white"
-                                android:layout_width="30dp"
-                                android:layout_height="35dp"
-                                android:text="-"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="16dp"/>
+<!--                            <Button-->
+<!--                                android:id="@+id/btnKurang"-->
+<!--                                android:background="@color/biruUtama"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="35dp"-->
+<!--                                android:text="-"-->
+<!--                                android:layout_gravity="center_vertical"-->
+<!--                                android:layout_marginStart="16dp"/>-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -264,7 +267,8 @@
                                     android:fontFamily="@font/poppins"
                                     android:text="Ongkos kirim"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    android:visibility="gone"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -291,7 +295,8 @@
                                     android:fontFamily="@font/poppins"
                                     android:text="2000"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    android:visibility="gone"/>
                             </LinearLayout>
                         </LinearLayout>
 

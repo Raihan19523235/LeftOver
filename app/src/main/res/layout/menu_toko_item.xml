@@ -37,7 +37,7 @@
                     android:text="Nama makanan"
                     android:textSize="18sp"
                     android:fontFamily="@font/poppins"
-                    android:textColor="@color/abuGelap"
+                    android:textColor="@color/black"
                     android:layout_marginStart="20dp"/>
 
                 <TextView
@@ -50,15 +50,37 @@
                     android:fontFamily="@font/poppins"
                     android:layout_marginStart="20dp"/>
 
-                <TextView
-                    android:id="@+id/tvHargaMenuToko"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Harga"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginStart="20dp"/>
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvHargaMenuToko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Harga"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_medium"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvTanggalProduksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal"
+                        android:layout_marginStart="30dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvIdTokoMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="idToko"
+                    android:visibility="invisible" />
+
 
             </LinearLayout>
 

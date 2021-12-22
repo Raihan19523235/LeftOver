@@ -21,8 +21,8 @@ class PemesanAdapter (var mContext : Context, var rvListPemesan : List<Pemesan>)
     override fun onBindViewHolder(holder: PemesanAdapter.MyViewHolder, position: Int) {
         val currentitem = rvListPemesan[position]
 
-        holder.nama_toko.text = currentitem.namaMak
-        holder.alamat_toko.text = currentitem.tanggalProd
+        holder.nama_user.text = currentitem.id_user
+        holder.nama_makanan.text = currentitem.namaMak
     }
 
     override fun getItemCount(): Int {
@@ -31,12 +31,12 @@ class PemesanAdapter (var mContext : Context, var rvListPemesan : List<Pemesan>)
 
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var nama_toko: TextView
-        var alamat_toko: TextView
+        var nama_user: TextView
+        var nama_makanan: TextView
 
         init {
-            nama_toko  = itemView.findViewById(R.id.tvNamaPemesan)
-            alamat_toko = itemView.findViewById(R.id.tvAlamatPemesan)
+            nama_user  = itemView.findViewById(R.id.tvNamaPemesan)
+            nama_makanan = itemView.findViewById(R.id.tvAlamatPemesan)
 
         }
 

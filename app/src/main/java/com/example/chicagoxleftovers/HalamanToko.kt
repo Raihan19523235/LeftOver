@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.chicagoxleftovers.databinding.ActivityBerandaPenjualBinding
@@ -26,8 +27,6 @@ class HalamanToko : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 12
     private lateinit var filepath: Uri
 
-    private lateinit var listAdapter: MenuTokoAdapter
-
 
     //Firebase
     lateinit var storageReference: StorageReference
@@ -42,6 +41,10 @@ class HalamanToko : AppCompatActivity() {
     private var mDBListener: ValueEventListener? = null
 
     private lateinit var mMenu:MutableList<Menu>
+    private lateinit var listAdapter: MenuTokoAdapter
+    private lateinit var menuRecyclerView: RecyclerView
+
+
     private lateinit var mToko:MutableList<Toko>
     private lateinit var mUser:MutableList<User>
 
@@ -64,6 +67,10 @@ class HalamanToko : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+        menuRecyclerView = findViewById(R.id.rvListMenuToko)
+        menuRecyclerView.layoutManager = LinearLayoutManager(this@HalamanToko,
+            LinearLayoutManager.VERTICAL, false)
+
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("menu")
 
         mMenu = ArrayList()
@@ -74,11 +81,11 @@ class HalamanToko : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 mMenu.clear()
                 for (MenuSnapshot in snapshot.children){
-//                    if(id_toko == MenuSnapshot.getValue(Menu::class.java)!!.id_toko){
+                    if(id_toko == MenuSnapshot.getValue(Menu::class.java)!!.id_toko){
                         val upload = MenuSnapshot.getValue(Menu::class.java)
                         upload!!.id_menu = MenuSnapshot.key
                         mMenu.add(upload)
-//                    }
+                    }
                 }
                 listAdapter.notifyDataSetChanged()
             }

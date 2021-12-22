@@ -24,7 +24,7 @@ class MenuTokoAdapter(var mContext : Context, var rvListMenuToko : List<Menu>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuTokoAdapter.MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_produk,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_toko_item,
             parent,false)
         return MyViewHolder(itemView)
 
@@ -40,6 +40,8 @@ class MenuTokoAdapter(var mContext : Context, var rvListMenuToko : List<Menu>) :
         holder.nama_menu.text = currentitem.nama_menu
         holder.harga_diskon.text = currentitem.harga_diskon.toString()
         holder.deskripsi.text = currentitem.deskripsi
+        holder.tanggal.text = currentitem.tanggal_produksi
+        holder.id_toko.text= currentitem.id_toko
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, MetodePembayaran::class.java)
@@ -47,8 +49,8 @@ class MenuTokoAdapter(var mContext : Context, var rvListMenuToko : List<Menu>) :
             intent.putExtra("EXTRA", holder.nama_menu.text)
             intent.putExtra("EXTRA_id", holder.itemId)
             intent.putExtra("EXTRA_harga",holder.harga_diskon.text)
-            intent.putExtra("EXTRA_tanggal",holder.deskripsi.text)
-
+            intent.putExtra("EXTRA_tanggal",holder.tanggal.text)
+            intent.putExtra("EXTRA_des",holder.deskripsi.text)
             it.context.startActivity(intent)
 
         }
@@ -71,14 +73,18 @@ class MenuTokoAdapter(var mContext : Context, var rvListMenuToko : List<Menu>) :
         var nama_menu: TextView
         var harga_diskon: TextView
         var deskripsi: TextView
+        var tanggal: TextView
+        var id_toko : TextView
 //        var listProduk : RecyclerView
 
         init {
 //            foto_produk = itemView.findViewById(R.id.ivMenu)
             nama_menu  = itemView.findViewById(R.id.tvNamaMenuToko)
-            harga_diskon = itemView.findViewById(R.id.tvDeskripsiMenuToko)
-            deskripsi = itemView.findViewById(R.id.tvTanggal)
-//            listProduk = itemView.findViewById(R.id.rvListProduk)
+            harga_diskon = itemView.findViewById(R.id.tvHargaMenuToko)
+            deskripsi = itemView.findViewById(R.id.tvDeskripsiMenuToko)
+            tanggal = itemView.findViewById(R.id.tvTanggalProduksi)
+            id_toko = itemView.findViewById(R.id.tvIdTokoMenu)
+        //            listProduk = itemView.findViewById(R.id.rvListProduk)
         }
 
     }

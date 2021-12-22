@@ -178,6 +178,11 @@ class MetodePembayaran : AppCompatActivity() {
         startActivity(intKeNotif)
     }
 
+    fun fKembali(view : View){
+        val intKembali = Intent(this, BerandaPembeli::class.java)
+        startActivity(intKembali)
+    }
+
 
 }
 
