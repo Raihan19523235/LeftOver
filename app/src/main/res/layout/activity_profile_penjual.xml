@@ -42,12 +42,11 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivppPenjual"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/abu" />
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/tvNamaToko"
@@ -118,7 +117,8 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_bold"
             android:text="4.0"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
+            android:gravity="bottom"
             android:textColor="@color/white"
             android:textSize="20dp" />
 

@@ -93,7 +93,7 @@ class EditMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         tanggal = dayOfMonth
         bulan = month
         tahun = year
-        teksTanggal = findViewById(R.id.tTanggal)
+        teksTanggal = findViewById(R.id.etTanggal)
         teksTanggal.text = "${tanggal} - ${bulan} - ${tahun}"
     }
 
@@ -166,7 +166,6 @@ class EditMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         hargaAsli = binding.etHargaAsli.text.toString().toInt()
         hargaDiskon = binding.etHargaDiskon.text.toString().toInt()
         tanggalProduksi = binding.etTanggal.text.toString().trim()
-        fotoProduk = binding.ivFotoMenu.toString()
         deskripsi = binding.etDeskripsi.text.toString().trim()
 
         //validate data
@@ -179,9 +178,6 @@ class EditMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         else if(hargaDiskon == null){
             Toast.makeText(this, "Harga Diskon tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
-        else if(mImageUri == null){
-            Toast.makeText(this, "Foto tidak boleh kosong", Toast.LENGTH_SHORT).show()
-        }
         else if(tanggalProduksi.isEmpty()){
             Toast.makeText(this, "Tanggal produksi tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
@@ -189,10 +185,38 @@ class EditMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             Toast.makeText(this, "Deskripsi tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
         else{
-//            saveData()
+            saveData()
 
         }
 
+    }
+
+    private fun saveData() {
+//        val database = Firebase.database
+//        val ref      = database.getReference("menu")
+        val ref = FirebaseDatabase.getInstance().getReference("menu")
+
+        //get id user
+        val id_toko = FirebaseAuth.getInstance().currentUser?.uid
+
+        //get current user uid
+        val id_menu = dataIntent!!.id_menu
+
+        //setup data to add db
+        val hashMap: HashMap<String, Any?> = HashMap()
+        hashMap["nama_menu"] = namaMenu
+        hashMap["harga_asli"] = hargaAsli
+        hashMap["harga_diskon"] = hargaDiskon
+        hashMap["tanggal_produksi"] = tanggalProduksi
+        hashMap["deskripsi"] = deskripsi
+
+        //set data to db
+//        ref.child(id_menu!!).setValue(hashMap)
+        ref.child(id_menu!!).updateChildren(hashMap)
+
+
+        startActivity(Intent(this@EditMenu, DaftarProduk::class.java))
+        finish()
     }
 
 

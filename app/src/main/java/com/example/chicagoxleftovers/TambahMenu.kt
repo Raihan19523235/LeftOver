@@ -245,7 +245,7 @@ class TambahMenu : AppCompatActivity(), DatePickerDialog.OnDateSetListener  {
 
         progressDialog.dismiss()
 
-        startActivity(Intent(this@TambahMenu, BerandaPenjual::class.java))
+        startActivity(Intent(this@TambahMenu, DaftarProduk::class.java))
         finish()
     }
 

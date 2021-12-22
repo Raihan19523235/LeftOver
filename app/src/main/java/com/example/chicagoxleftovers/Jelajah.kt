@@ -94,4 +94,18 @@ class Jelajah : AppCompatActivity() {
 
         }
     }
+
+    fun fKeToko(view: android.view.View) {
+        startActivity(Intent(this, HalamanToko::class.java))
+        finish()
+    }
+
+    fun fKeBerandaPembeli(view: android.view.View) {
+        startActivity(Intent(this, BerandaPembeli::class.java))
+        finish()
+    }
+    fun fKeProfilePembeli(view: android.view.View) {
+        startActivity(Intent(this, ProfilePembeli::class.java))
+        finish()
+    }
 }

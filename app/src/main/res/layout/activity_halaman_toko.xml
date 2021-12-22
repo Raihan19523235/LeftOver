@@ -15,6 +15,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
+            android:onClick="fKembali"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
@@ -59,6 +60,7 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/ivfotoToko"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                                 android:background="@color/abu"
@@ -71,6 +73,7 @@
                                 android:layout_gravity="center_vertical">
 
                                 <TextView
+                                    android:id="@+id/tvNamaToko"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="30dp"
@@ -80,6 +83,7 @@
                                     android:fontFamily="@font/poppins_semibold"/>
 
                                 <TextView
+                                    android:id="@+id/tvAlamatToko"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Alamat Toko"
@@ -118,64 +122,15 @@
                             android:textColor="@color/abu"
                             android:layout_marginStart="16dp"/>
 
-                        <LinearLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvListMenuToko"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginTop="10dp">
+                            tools:listitem="@layout/menu_toko_item">
 
 
+                        </androidx.recyclerview.widget.RecyclerView>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:background="@color/abu"
-                                    android:layout_marginStart="16dp"/>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:layout_gravity="center_vertical">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Nama makanan"
-                                        android:textSize="18sp"
-                                        android:fontFamily="@font/poppins"
-                                        android:textColor="@color/abuGelap"
-                                        android:layout_marginStart="20dp"/>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Keterangan makanan"
-                                        android:textSize="16sp"
-                                        android:textColor="@color/abu"
-                                        android:fontFamily="@font/poppins"
-                                        android:layout_marginStart="20dp"/>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Harga"
-                                        android:textSize="18sp"
-                                        android:textColor="@color/black"
-                                        android:fontFamily="@font/poppins_medium"
-                                        android:layout_marginStart="20dp"/>
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
                     </LinearLayout>
 
 

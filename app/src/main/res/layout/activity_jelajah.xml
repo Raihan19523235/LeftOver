@@ -36,12 +36,52 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListStore"
+            android:onClick="fKeToko"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/card_store" />
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/nbMenu"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/custom_navbar"
+        android:orientation="horizontal"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="10dp">
+
+        <ImageButton
+            android:id="@+id/btHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="70dp"
+            android:background="@drawable/ic_house"
+            android:onClick="fKeBerandaPembeli"
+            android:padding="36dp" />
+
+        <ImageButton
+            android:id="@+id/btJelajah"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="70dp"
+            android:background="@drawable/ic_jelajah"
+            android:padding="36dp" />
+
+        <ImageButton
+            android:id="@+id/btProfil"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/ic_user"
+            android:onClick="fKeProfilePembeli"
+            android:padding="32dp" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

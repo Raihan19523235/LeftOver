@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChicagoxLeftovers">
         <activity
+            android:name=".ProfilePembeli"
+            android:exported="false" />
+        <activity
             android:name=".Jelajah"
             android:exported="false" />
         <activity
@@ -57,6 +60,7 @@
             android:name=".Pengiriman"
             android:exported="false" />
         <activity
+
             android:name=".NotifBerhasil"
             android:exported="false"
             android:parentActivityName=".MainActivity">

@@ -45,14 +45,14 @@
 
 
         <ImageView
+            android:id="@+id/ivProfilePenjual"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="15dp"
-            android:background="@color/black"
             android:duplicateParentState="false"
             android:onClick="fKeProfil"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="InvalidId,SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
@@ -113,6 +113,7 @@
         android:layout_marginTop="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListPemesan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/pesanan_item"/>

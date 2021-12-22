@@ -3,14 +3,18 @@ package com.example.chicagoxleftovers
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.chicagoxleftovers.databinding.ActivityProfilePenjualBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_daftar_produk.*
 import kotlinx.android.synthetic.main.activity_profile_penjual.*
+import java.util.HashMap
 
 class ProfilePenjual : AppCompatActivity() {
 
@@ -21,6 +25,7 @@ class ProfilePenjual : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     private var mDatabaseRef: DatabaseReference? = null
+    private var mDatabaseRefToko: DatabaseReference? = null
     private var mDBListener: ValueEventListener? = null
     private lateinit var mRating:MutableList<Rating>
     private lateinit var listAdapter: RatingAdapter
@@ -36,8 +41,9 @@ class ProfilePenjual : AppCompatActivity() {
         binding = ActivityProfilePenjualBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ratingList.setHasFixedSize(true)
+        ratingList.setHasFixedSize(false)
         ratingList.layoutManager = LinearLayoutManager(this@ProfilePenjual)
+
         mRating = ArrayList()
         listAdapter = RatingAdapter(this@ProfilePenjual, mRating)
         ratingList.adapter = listAdapter
@@ -46,6 +52,7 @@ class ProfilePenjual : AppCompatActivity() {
         checkUser()
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("rating")
+        mDatabaseRefToko = FirebaseDatabase.getInstance().getReference("toko")
 
         mDBListener = mDatabaseRef!!.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -55,11 +62,16 @@ class ProfilePenjual : AppCompatActivity() {
                         val upload = RatingSnapshot.getValue(Rating::class.java)
                         upload!!.id_Rating = RatingSnapshot.key
                         rating =  rating + upload.rating
-                        userRating =+ 1.0
+                        userRating += 1
+//                        userRating = upload.namaPerating!!.length.toDouble()
                         mRating.add(upload)
                     }
                 }
                 ratingRata = rating/userRating
+                val hashMap: HashMap<String, Any?> = HashMap()
+                hashMap["rating"] = ratingRata
+//                mDatabaseRefToko!!.child(firebaseAuth.currentUser!!.uid).updateChildren(hashMap)
+
                 binding.tvRating.text = ratingRata.toString()
 
                 listAdapter.notifyDataSetChanged()
@@ -101,6 +113,22 @@ class ProfilePenjual : AppCompatActivity() {
                     mToko.clear()
                     for (TokoSnapshot in snapshot.children){
                         if(firebaseAuth.currentUser!!.uid == TokoSnapshot.getValue(Toko::class.java)!!.id_user){
+
+                            val user = TokoSnapshot.getValue(Toko::class.java)!!.id_user
+                            val storageReference = FirebaseStorage.getInstance().getReference("Toko/$user.jpg")
+
+                            storageReference.downloadUrl.addOnSuccessListener { dataUri->
+                                Glide.with(this@ProfilePenjual)
+                                    .load(dataUri)
+                                    .into(binding.ivppPenjual)
+                            }
+                                .addOnFailureListener{
+                                    Log.d("Error : ", it.toString())
+                                }
+
+
+
+
                             val alamat = TokoSnapshot.getValue(Toko::class.java)!!.alamat_toko
                             val namaToko = TokoSnapshot.getValue(Toko::class.java)!!.nama_toko
                             val nomorTlp = TokoSnapshot.getValue(Toko::class.java)!!.no_Tlp

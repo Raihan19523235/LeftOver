@@ -1,18 +1,21 @@
 package com.example.chicagoxleftovers
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.database.FirebaseDatabase
 
 //class MyAdapter(private val menuList : ArrayList<Menu>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 class MyAdapter( var mContext : Context, var menuList : MutableList<Menu>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
+    val ref = FirebaseDatabase.getInstance().getReference("menu")
 
     private lateinit var listenerClickEdit : setOnClickEdit
 
@@ -37,9 +40,10 @@ class MyAdapter( var mContext : Context, var menuList : MutableList<Menu>) : Rec
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentitem = menuList[position]
 //        Glide.with(mContext)
-//            .load(currentitem.foto_produk).into(holder.foto_produk)
+//            .load(currentitem.foto_produk!!.toUri())
+//            .into(holder.foto_produk)
 
-        holder.foto_produk.loadImage(currentitem.foto_produk)
+//        holder.foto_produk.loadImage(currentitem.foto_produk)
         holder.nama_menu.text = currentitem.nama_menu
         holder.harga_diskon.text = currentitem.harga_asli.toString()
         holder.tanggal_produksi.text = currentitem.tanggal_produksi
@@ -48,6 +52,7 @@ class MyAdapter( var mContext : Context, var menuList : MutableList<Menu>) : Rec
         }
         holder.deleteData.setOnClickListener {
             listenerClickDelete.deleteDataMenu(menuList[position])
+            ref.child(menuList[position].id_menu.toString()).removeValue()
             menuDelete(position)
         }
 
@@ -91,8 +96,11 @@ class MyAdapter( var mContext : Context, var menuList : MutableList<Menu>) : Rec
 
     fun menuDelete(position: Int){
         this.menuList.removeAt(position)
+
+
+
         notifyItemRemoved(position)
-        notifyDataSetChanged()
+//        ref.child(position)
     }
 }
 

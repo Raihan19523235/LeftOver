@@ -52,6 +52,13 @@
             android:textSize="14sp"
             android:textColor="@color/biruGelap"/>
 
+        <TextView
+            android:id="@+id/tvIdToko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="idToko"
+            android:visibility="invisible" />
+
 
     </LinearLayout>
 

@@ -14,15 +14,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Glide.with
 import com.squareup.picasso.Picasso
 
-class MenuAdapter(var mContext : Context, var rvListProduk : List<Menu>) : RecyclerView.Adapter<MenuAdapter.MyViewHolder>() {
+class MenuTokoAdapter(var mContext : Context, var rvListMenuToko : List<Menu>) : RecyclerView.Adapter<MenuTokoAdapter.MyViewHolder>() {
 
-    private lateinit var listenerClickMenu : MenuAdapter.setOnClickMenu
+    private lateinit var listenerClickMenu : MenuTokoAdapter.setOnClickMenu
 
-    fun clickButtonMenu(v : MenuAdapter.setOnClickMenu){
+    fun clickButtonMenu(v : MenuTokoAdapter.setOnClickMenu){
         this.listenerClickMenu = v
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuTokoAdapter.MyViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_produk,
             parent,false)
@@ -31,7 +31,7 @@ class MenuAdapter(var mContext : Context, var rvListProduk : List<Menu>) : Recyc
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentitem = rvListProduk[position]
+        val currentitem = rvListMenuToko[position]
 
 //        holder.foto_produk.loadImage(currentitem.foto_produk)
 //        Glide.with(mContext)
@@ -39,16 +39,15 @@ class MenuAdapter(var mContext : Context, var rvListProduk : List<Menu>) : Recyc
 //            .into(holder.foto_produk)
         holder.nama_menu.text = currentitem.nama_menu
         holder.harga_diskon.text = currentitem.harga_diskon.toString()
-        holder.tanggal_produksi.text = currentitem.tanggal_produksi
-        holder.id_toko.text= currentitem.id_toko
+        holder.deskripsi.text = currentitem.deskripsi
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, MetodePembayaran::class.java)
 
             intent.putExtra("EXTRA", holder.nama_menu.text)
+            intent.putExtra("EXTRA_id", holder.itemId)
             intent.putExtra("EXTRA_harga",holder.harga_diskon.text)
-            intent.putExtra("EXTRA_tanggal",holder.tanggal_produksi.text)
-            intent.putExtra("EXTRA_id",holder.id_toko.text)
+            intent.putExtra("EXTRA_tanggal",holder.deskripsi.text)
 
             it.context.startActivity(intent)
 
@@ -64,23 +63,21 @@ class MenuAdapter(var mContext : Context, var rvListProduk : List<Menu>) : Recyc
     }
 
     override fun getItemCount(): Int {
-        return rvListProduk.size
+        return rvListMenuToko.size
     }
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-//        var foto_produk: ImageView
+        //        var foto_produk: ImageView
         var nama_menu: TextView
         var harga_diskon: TextView
-        var tanggal_produksi: TextView
-        var id_toko : TextView
+        var deskripsi: TextView
 //        var listProduk : RecyclerView
 
         init {
 //            foto_produk = itemView.findViewById(R.id.ivMenu)
-            nama_menu  = itemView.findViewById(R.id.tvNamaProduk)
-            harga_diskon = itemView.findViewById(R.id.tvHargaAsli)
-            tanggal_produksi = itemView.findViewById(R.id.tvTanggal)
-            id_toko = itemView.findViewById(R.id.tvIdToko)
+            nama_menu  = itemView.findViewById(R.id.tvNamaMenuToko)
+            harga_diskon = itemView.findViewById(R.id.tvDeskripsiMenuToko)
+            deskripsi = itemView.findViewById(R.id.tvTanggal)
 //            listProduk = itemView.findViewById(R.id.rvListProduk)
         }
 

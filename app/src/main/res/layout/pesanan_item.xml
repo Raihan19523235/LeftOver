@@ -13,42 +13,32 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@color/abu"
-                android:layout_gravity="center_vertical"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="16dp">
 
                 <TextView
+                    android:id="@+id/tvNamaPemesan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="nama Pembeli"
+                    android:text="nama Makanan"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/tvAlamatPemesan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="alamat"
+                    android:text="Tanggal Pemesanan"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/black"/>
 
-                <Button
-                    android:layout_width="260dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"
-                    android:text="Lihat Pesanan"
-                    android:textColor="@color/white"
-                    android:background="@drawable/custom_button_biru"/>
 
             </LinearLayout>
 

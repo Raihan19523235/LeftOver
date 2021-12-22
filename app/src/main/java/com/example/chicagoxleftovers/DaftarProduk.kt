@@ -7,15 +7,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chicagoxleftovers.databinding.ActivityDaftarProdukBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.StorageTask
 import kotlinx.android.synthetic.main.activity_daftar_produk.*
 
 class DaftarProduk : AppCompatActivity() {
@@ -48,8 +44,11 @@ class DaftarProduk : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        menuList.setHasFixedSize(true)
-        menuList.layoutManager = LinearLayoutManager(this@DaftarProduk)
+        menuRecyclerView = findViewById(R.id.menuList)
+        menuRecyclerView.layoutManager = LinearLayoutManager(this@DaftarProduk,
+            LinearLayoutManager.VERTICAL, false)
+
+
         mMenu = ArrayList()
         listAdapter = MyAdapter(this@DaftarProduk, mMenu)
         menuList.adapter = listAdapter
@@ -68,6 +67,7 @@ class DaftarProduk : AppCompatActivity() {
             override fun deleteDataMenu(menu: Menu) {
                 //fungsi untuk delete di database
                 Toast.makeText(this@DaftarProduk, "SUCCESS DELETE", Toast.LENGTH_SHORT).show()
+//                not
             }
 
         })

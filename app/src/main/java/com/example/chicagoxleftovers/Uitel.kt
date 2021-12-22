@@ -6,11 +6,11 @@ import com.bumptech.glide.request.RequestOptions
 //import com.malkinfo.addinformationfirebase.R
 
 
-fun ImageView.loadImage(url: String?){
+fun ImageView.loadImage(uri: String?){
     val option = RequestOptions().placeholder(R.mipmap.ic_launcher)
         .error(R.mipmap.ic_launcher)
     Glide.with(context)
         .setDefaultRequestOptions(option)
-        .load(url)
+        .load(uri)
         .into(this)
 }
